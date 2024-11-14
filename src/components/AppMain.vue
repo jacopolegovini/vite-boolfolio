@@ -28,16 +28,21 @@ export default {
 
 <template>
     <main>
-        <div class="container">
+        <div class="card-list container d-flex">
             <div class="card" style="width: 18rem;" v-for="project in projectList" :key="project.id">
                 <div class="card-body">
                     <h5 class="card-title">{{ project.title }}</h5>
                     <p class="card-text">{{ project.description }}</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                    <a href="#" class="btn btn-primary">Go Back</a>
                 </div>
             </div>
         </div>
     </main>
 </template>
 
-<style scoped></style>
+<style scoped>
+.card-list {
+    flex-wrap: wrap;
+    gap: 20px;
+}
+</style>
