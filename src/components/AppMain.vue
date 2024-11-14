@@ -13,7 +13,7 @@ export default {
         getProject() {
             axios.get(this.apiUrl)
                 .then((response) => {
-                    this.projectListList = response.data.results;
+                    this.projectList = response.data.results;
                 })
                 .catch(function (error) {
                     console.log(error);
@@ -28,7 +28,15 @@ export default {
 
 <template>
     <main>
-        <p>test</p>
+        <div class="container">
+            <div class="card" style="width: 18rem;" v-for="project in projectList" :key="project.id">
+                <div class="card-body">
+                    <h5 class="card-title">{{ project.title }}</h5>
+                    <p class="card-text">{{ project.description }}</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+            </div>
+        </div>
     </main>
 </template>
 
