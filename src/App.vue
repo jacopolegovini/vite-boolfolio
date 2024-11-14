@@ -1,5 +1,15 @@
-<script setup>
+<script>
 import AppMain from './components/AppMain.vue'
+
+export default {
+  data() {
+    return {
+    }
+  },
+  components: {
+    AppMain
+  }
+}
 </script>
 
 <template>
@@ -8,4 +18,6 @@ import AppMain from './components/AppMain.vue'
   </div>
 </template>
 
-<style scoped></style>
+<style lang="scss">
+@use "./styles/general.scss" as *;
+</style>
