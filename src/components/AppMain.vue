@@ -22,7 +22,13 @@ export default {
         },
         deleteProject(index) {
             return this.projectList.splice(index, 1)
-        }
+        },
+        deleteProjectDB(index) {
+            axios.delete(`http://127.0.0.1:8000/api/projects/${index}`)
+                .then(response => {
+                    console.log(`Deleted post with ID ${index}`);
+                })
+        },
     },
     created() {
         this.getProject();
@@ -37,7 +43,7 @@ export default {
                 <div class="card-body">
                     <h5 class="card-title">{{ project.title }}</h5>
                     <p class="card-text">{{ project.description }}</p>
-                    <button class="btn btn-primary" @click="deleteProject(index)">Done</button>
+                    <button class="btn btn-primary" @click="deleteProject(index), deleteProjectDB(index)">Done</button>
                 </div>
             </div>
         </div>
