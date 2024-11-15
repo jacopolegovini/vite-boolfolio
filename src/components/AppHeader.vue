@@ -11,22 +11,24 @@ export default {
 </script>
 
 <template>
-    <h1 class="my-3">Project's Card</h1>
-    <nav>
-        <ul>
-            <li>
-                <RouterLink :to="{ name: 'home' }">
-                    Home
-                </RouterLink>
-            </li>
-            <li>
-                <RouterLink :to="{ name: 'projects' }">
-                    Projects
-                </RouterLink>
-            </li>
-        </ul>
+    <div class="container my-3 d-flex align-items-center">
+        <h1 class="">Project's Card</h1>
+        <nav>
+            <ul class="d-flex gap-4">
+                <li>
+                    <RouterLink :to="{ name: 'home' }">
+                        Home
+                    </RouterLink>
+                </li>
+                <li>
+                    <RouterLink :to="{ name: 'projects' }">
+                        Projects
+                    </RouterLink>
+                </li>
+            </ul>
 
-    </nav>
+        </nav>
+    </div>
 </template>
 
 <style scoped></style>

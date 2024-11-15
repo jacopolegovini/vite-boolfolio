@@ -1,21 +1,23 @@
 <script>
 import AppHeader from '../src/components/AppHeader.vue';
+import ProjectsCount from '../src/components/ProjectsCount.vue';
 
 export default {
   data() {
     return {
-      
+
     }
   },
   components: {
-    AppHeader
+    AppHeader,
+    ProjectsCount
   }
 }
 </script>
 
 <template>
-    <AppHeader/>
+  <AppHeader />
+  <ProjectsCount />
 </template>
 
-<style scoped>
-</style>
+<style scoped></style>
