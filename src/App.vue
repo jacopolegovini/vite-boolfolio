@@ -1,6 +1,7 @@
 <script>
 import AppMain from './components/AppMain.vue'
 import AppHeader from './components/AppHeader.vue'
+import { RouterView } from 'vue-router';
 
 export default {
   data() {
@@ -16,8 +17,9 @@ export default {
 
 <template>
   <div>
-    <AppHeader />
-    <AppMain />
+    <!-- <AppHeader /> -->
+    <RouterView />
+    <!-- <AppMain /> -->
   </div>
 </template>
 
