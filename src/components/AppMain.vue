@@ -14,10 +14,14 @@ export default {
             axios.get(this.apiUrl)
                 .then((response) => {
                     this.projectList = response.data.results;
+                    console.log(this.projectList)
                 })
                 .catch(function (error) {
                     console.log(error);
                 });
+        },
+        deleteProject(index) {
+            return this.projectList.splice(index, 1)
         }
     },
     created() {
@@ -29,11 +33,11 @@ export default {
 <template>
     <main>
         <div class="card-list container d-flex">
-            <div class="card" style="width: 18rem;" v-for="project in projectList" :key="project.id">
+            <div class="card" style="width: 18rem;" v-for="(project, index) in projectList" :key="project.id">
                 <div class="card-body">
                     <h5 class="card-title">{{ project.title }}</h5>
                     <p class="card-text">{{ project.description }}</p>
-                    <a href="#" class="btn btn-primary">Done</a>
+                    <button class="btn btn-primary" @click="deleteProject(index)">Done</button>
                 </div>
             </div>
         </div>
