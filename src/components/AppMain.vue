@@ -44,6 +44,7 @@ export default {
                     <h5 class="card-title">{{ project.title }}</h5>
                     <p class="card-text">{{ project.description }}</p>
                     <button class="btn btn-primary" @click="deleteProject(index), deleteProjectDB(index)">Done</button>
+                    <button class="btn btn-warning">Show</button>
                 </div>
             </div>
         </div>
