@@ -30,6 +30,9 @@ export default {
                     console.log(`Deleted post with ID ${index}`);
                 })
         },
+        showProject(id) {
+
+        }
     },
     created() {
         this.getProject();
@@ -39,18 +42,17 @@ export default {
 
 <template>
     <main>
-        <!-- Loader -->
-
-
-        <!-- Projects -->
         <div class="card-list container d-flex">
+            <!-- Loader -->
             <div class="loader container" v-if="!loaded"></div>
+
+            <!-- Projects -->
             <div class="card" style="width: 18rem;" v-for="(project, index) in projectList" :key="project.id">
                 <div class="card-body">
                     <h5 class="card-title">{{ project.title }}</h5>
                     <p class="card-text">{{ project.description }}</p>
                     <button class="btn btn-primary" @click="deleteProject(index), deleteProjectDB(index)">Done</button>
-                    <button class="btn btn-warning">Show</button>
+                    <button class="btn btn-warning" @click="">Show</button>
                 </div>
             </div>
         </div>
