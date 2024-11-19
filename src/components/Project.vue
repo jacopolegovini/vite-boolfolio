@@ -11,28 +11,30 @@ export default {
         }
     },
     methods: {
-        getProject() {
-            axios.get(`${this.apiUrl}/${this.$route.params.id}`)
-                .then((response) => {
-                    this.project = response.data.results;
-                })
-                .catch(function (error) {
-                    console.log(error);
-                });
-        },
+        // Messo una store, non più necessaria
+        // getProject() {
+        //     axios.get(`${this.apiUrl}/${this.$route.params.id}`)
+        //         .then((response) => {
+        //             this.project = response.data.results;
+        //         })
+        //         .catch(function (error) {
+        //             console.log(error);
+        //         });
+        // },
     },
     computed: {
 
     },
 
     mounted() {
+        // Messo una store, non più necessaria
         // this.getProject()
     }
 }
 </script>
 
 <template>
-    <div>
+    <div class="container">
         <h1>Project: {{ $route.params.id }}</h1>
         <h2>Title: {{ store.project.title }}</h2>
     </div>

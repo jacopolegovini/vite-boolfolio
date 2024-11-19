@@ -8,14 +8,13 @@ export default {
         return {
             projectList: [],
             project: [],
-            apiUrl: 'http://127.0.0.1:8000/api/projects',
             loaded: false,
             store
         }
     },
     methods: {
         getProjects() {
-            axios.get(this.apiUrl)
+            axios.get(store.apiUrl)
                 .then((response) => {
                     this.projectList = response.data.results;
                     this.loaded = true
@@ -25,7 +24,7 @@ export default {
                 });
         },
         getProject(id) {
-            axios.get(`${this.apiUrl}/${id}`)
+            axios.get(`${store.apiUrl}/${id}`)
                 .then((response) => {
                     this.store.project = response.data.results;
                 })
