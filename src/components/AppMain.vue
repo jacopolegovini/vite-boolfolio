@@ -1,27 +1,33 @@
 <script>
 import axios from 'axios';
+import { store } from '../../js/store.js'
 
 export default {
     name: 'AppMain',
     data() {
         return {
             projectList: [],
+            project: [],
             apiUrl: 'http://127.0.0.1:8000/api/projects',
-            loaded: false
-        }
-    },
-    props: {
-        withShow: {
-            required: false,
-            type: Boolean,
+            loaded: false,
+            store
         }
     },
     methods: {
-        getProject() {
+        getProjects() {
             axios.get(this.apiUrl)
                 .then((response) => {
                     this.projectList = response.data.results;
                     this.loaded = true
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        },
+        getProject(id) {
+            axios.get(`${this.apiUrl}/${id}`)
+                .then((response) => {
+                    this.store.project = response.data.results;
                 })
                 .catch(function (error) {
                     console.log(error);
@@ -36,13 +42,12 @@ export default {
                     console.log(`Deleted post with ID ${index}`);
                 })
         },
-        show(id) {
+        goToShow(id) {
             this.$router.push({ name: 'project', params: { id: id } })
-
         }
     },
     created() {
-        this.getProject();
+        this.getProjects();
     }
 }
 </script>
@@ -59,7 +64,7 @@ export default {
                     <h5 class="card-title">{{ project.title }}</h5>
                     <p class="card-text">{{ project.description }}</p>
                     <button class="btn btn-primary" @click="deleteProject(index), deleteProjectDB(index)">Done</button>
-                    <button class="btn btn-warning" @click="show(project.id)">Show</button>
+                    <button class="btn btn-warning" @click="goToShow(project.id), getProject(project.id)">Show</button>
                 </div>
             </div>
         </div>

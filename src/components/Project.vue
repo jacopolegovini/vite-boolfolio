@@ -1,11 +1,13 @@
 <script>
 import axios from 'axios';
+import { store } from '../../js/store.js'
 
 export default {
     data() {
         return {
             apiUrl: 'http://127.0.0.1:8000/api/projects',
             project: [],
+            store,
         }
     },
     methods: {
@@ -24,7 +26,7 @@ export default {
     },
 
     mounted() {
-        this.getProject()
+        // this.getProject()
     }
 }
 </script>
@@ -32,7 +34,7 @@ export default {
 <template>
     <div>
         <h1>Project: {{ $route.params.id }}</h1>
-        <h2>Title: {{ project.title }}</h2>
+        <h2>Title: {{ store.project.title }}</h2>
     </div>
 </template>
 
