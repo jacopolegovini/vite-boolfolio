@@ -7,7 +7,8 @@ export const store = reactive({
     storeProjectList: [],
     project: [],
     searchedProject: '',
-    projectListFiltered: [],
+    // projectListFiltered: [],
+    projectListMap: [],
 
     searchProject(searchedProject) {
         console.log(searchedProject)
@@ -15,8 +16,13 @@ export const store = reactive({
             .then((response) => {
                 this.storeProjectList = response.data.results;
                 console.log(this.storeProjectList)
-                this.projectListFiltered = this.storeProjectList.filter(element => element.title === searchedProject)
-                console.log(this.projectListFiltered)
+                let projectListFiltered = this.storeProjectList.filter(element => element.title.toLowerCase().includes(searchedProject.trim().toLowerCase()))
+                this.projectListMap = projectListFiltered.map(element => {
+                    return element.id
+                })
+                console.log(this.projectListMap)
+                this.apiUrl = `${this.apiUrl}/${this.projectListMap}`
+
 
             })
             .catch(function (error) {
