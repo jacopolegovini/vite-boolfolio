@@ -10,6 +10,12 @@ export default {
             loaded: false
         }
     },
+    props: {
+        withShow: {
+            required: false,
+            type: Boolean,
+        }
+    },
     methods: {
         getProject() {
             axios.get(this.apiUrl)
@@ -30,7 +36,8 @@ export default {
                     console.log(`Deleted post with ID ${index}`);
                 })
         },
-        showProject(id) {
+        show(id) {
+            this.$router.push({ name: 'project', params: { id: id } })
 
         }
     },
@@ -52,7 +59,7 @@ export default {
                     <h5 class="card-title">{{ project.title }}</h5>
                     <p class="card-text">{{ project.description }}</p>
                     <button class="btn btn-primary" @click="deleteProject(index), deleteProjectDB(index)">Done</button>
-                    <button class="btn btn-warning" @click="">Show</button>
+                    <button class="btn btn-warning" @click="show(project.id)">Show</button>
                 </div>
             </div>
         </div>

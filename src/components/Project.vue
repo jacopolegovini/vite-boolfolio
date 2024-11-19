@@ -5,38 +5,25 @@ export default {
     data() {
         return {
             apiUrl: 'http://127.0.0.1:8000/api/projects',
-            projectList: [],
+            project: [],
         }
     },
     methods: {
         getProject() {
-            axios.get(this.apiUrl)
+            axios.get(`${this.apiUrl}/${this.$route.params.id}`)
                 .then((response) => {
-                    this.projectList = response.data.results;
-                    console.log(response.data.results)
+                    this.project = response.data.results;
                 })
                 .catch(function (error) {
                     console.log(error);
                 });
         },
-        getProjectId() {
-            console.log('test1')
-            console.log(parseInt(this.$route.params.id))
-            return parseInt(this.$route.params.id)
-        },
-        getProjectById(projectList) {
-            console.log('test2')
-            console.log(projectList.find(element => element.id === this.getProjectId))
-            return this.projectList.find(element => element.id === this.getProjectId)
-        }
-
-
     },
     computed: {
 
     },
 
-    created() {
+    mounted() {
         this.getProject()
     }
 }
@@ -44,8 +31,8 @@ export default {
 
 <template>
     <div>
-        Project {{ $route.params.id }}
-        <h2>{{ getProjectById(this.projectList).title }}</h2>
+        <h1>Project: {{ $route.params.id }}</h1>
+        <h2>Title: {{ project.title }}</h2>
     </div>
 </template>
 
